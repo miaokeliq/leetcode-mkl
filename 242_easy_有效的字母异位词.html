@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      
+
+     -->
+
+    <script>
+      var isAnagram = function (s, t) {
+        let hash = Array(26).fill(0);
+
+        for (var i = 0; i < s.length; i++) {
+          hash[s[i] - "a"]++;
+          console.log(s[i].charCodeAt());
+        }
+
+        for (var j = 0; j < t.length; j++) {
+          hash[s[j] - "a"]--;
+        }
+
+        for (var k = 0; k < 26; k++) {
+          if (hash[k] != 0) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+
+      var s = "rat";
+      var t = "car";
+
+      console.log(isAnagram(s, t));
+    </script>
+  </body>
+</html>

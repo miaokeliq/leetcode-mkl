@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      给你一个正整数 n ，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的 n x n 正方形矩阵 matrix 。
+
+示例 1：
+      输入：n = 3
+输出：[[1,2,3],[8,9,4],[7,6,5]]
+
+示例 2：
+输入：n = 1
+输出：[[1]]
+     -->
+
+    <script>
+      /**   模拟过程
+       * @param {number} n
+       * @return {number[][]}
+       */
+      var generateMatrix = function (n) {
+        var startX = (startY = 0);
+        var count = 1;
+        var offset = 1;
+        var circleNum = Math.floor(n / 2); //转的圈数
+        var mid = circleNum;
+        var nums = Array(n)
+          .fill()
+          .map(() => Array(n));
+
+        while (circleNum) {
+          var i = startX;
+          var j = startY;
+          for (; j < n - offset; j++) {
+            nums[i][j] = count++;
+          } //从左到右
+          for (; i < n - offset; i++) {
+            nums[i][j] = count++;
+          } //从上到下
+          for (; j > startX; j--) {
+            nums[i][j] = count++;
+          } //从右到左
+          console.log(i, j);
+          for (; i > startY; i--) {
+            nums[i][j] = count++;
+          }
+          circleNum--;
+          startX++;
+          startY++;
+          offset++;
+        }
+
+        if (n % 2 == 1) {
+          nums[mid][mid] = count;
+        }
+
+        return nums;
+      };
+
+      var n = 3;
+      console.log(generateMatrix(n));
+    </script>
+  </body>
+</html>

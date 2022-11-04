@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        给定两个数组 nums1 和 nums2 ，返回 它们的交集 。输出结果中的每个元素一定是 唯一 的。我们可以 不考虑输出结果的顺序 。
+
+示例 1：
+
+输入：nums1 = [1,2,2,1], nums2 = [2,2]
+输出：[2]
+
+示例 2：
+输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+输出：[9,4]
+解释：[4,9] 也是可通过的
+
+     -->
+    <script>
+      /**
+       * @param {number[]} nums1
+       * @param {number[]} nums2
+       * @return {number[]}
+       */
+      var intersection = function (nums1, nums2) {
+        let number1Set = new Set(nums1);
+        let result = new Set();
+
+        for (var i = 0; i < nums2.length; i++) {
+          if (number1Set.has(nums2[i])) {
+            result.add(nums2[i]);
+          }
+        }
+
+        return [...result];
+      };
+
+      var nums1 = [4, 9, 5];
+      var nums2 = [9, 4, 9, 8, 4];
+      console.log(intersection(nums1, nums2));
+    </script>
+  </body>
+</html>
