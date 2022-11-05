@@ -35,7 +35,36 @@ nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
        * @param {number[]} nums4
        * @return {number}
        */
-      var fourSumCount = function (nums1, nums2, nums3, nums4) {};
+      var fourSumCount = function (nums1, nums2, nums3, nums4) {
+        let hashmap = new Map();
+        for (const num1 of nums1) {
+          for (const num2 of nums2) {
+            if (!hashmap.has(num1 + num2)) {
+              hashmap.set(num1 + num2, 1);
+            } else {
+              hashmap.set(num1 + num2, hashmap.get(num1 + num2) + 1);
+            }
+          }
+        }
+
+        let count = 0;
+        for (const num3 of nums3) {
+          for (const num4 of nums4) {
+            let target = 0 - (num3 + num4);
+            if (hashmap.has(target)) {
+              count = count + hashmap.get(target);
+            }
+          }
+        }
+        return count;
+      };
+
+      var nums1 = [1, 2];
+      var nums2 = [-2, -1];
+      var nums3 = [-1, 2];
+      var nums4 = [0, 2];
+
+      console.log(fourSumCount(nums1, nums2, nums3, nums4));
     </script>
   </body>
 </html>
