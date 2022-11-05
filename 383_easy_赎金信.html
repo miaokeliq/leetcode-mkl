@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。
+如果可以，返回 true ；否则返回 false 。
+magazine 中的每个字符只能在 ransomNote 中使用一次。
+
+示例 1：
+输入：ransomNote = "a", magazine = "b"
+输出：false
+
+示例 2：
+输入：ransomNote = "aa", magazine = "ab"
+输出：false
+
+示例 3：
+输入：ransomNote = "aa", magazine = "aab"
+输出：true
+
+     -->
+
+    <script>
+      /**
+       * @param {string} ransomNote
+       * @param {string} magazine
+       * @return {boolean}
+       */
+      var canConstruct = function (ransomNote, magazine) {
+        let hash = Array(26).fill(0);
+        let charA = "a".charCodeAt();
+
+        for (let i = 0; i < magazine.length; i++) {
+          hash[magazine[i].charCodeAt() - charA]++;
+        }
+
+        for (let j = 0; j < ransomNote.length; j++) {
+          hash[ransomNote[j].charCodeAt() - charA]--;
+
+          if (hash[ransomNote[j].charCodeAt() - charA] < 0) {
+            return false;
+          }
+        }
+
+        return true;
+      };
+    </script>
+  </body>
+</html>
