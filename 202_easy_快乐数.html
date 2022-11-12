@@ -16,9 +16,6 @@
 然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。
 如果这个过程 结果为 1，那么这个数就是快乐数。
 如果 n 是 快乐数 就返回 true ；不是，则返回 false 。
-
- 
-
 示例 1：
 
 输入：n = 19
@@ -44,10 +41,11 @@
         }
         return sum;
       };
-      /**
+      /*
        * @param {number} n
        * @return {boolean}
        */
+
       var isHappy = function (n) {
         let hSet = new Set();
         while (true) {
@@ -58,7 +56,7 @@
           if (!hSet.has(sum)) {
             hSet.add(sum);
           } else {
-            return false;
+            return false; //
           }
           n = sum;
         }
