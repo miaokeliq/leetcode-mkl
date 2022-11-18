@@ -40,6 +40,7 @@ var replaceSpace = function (s) {
     }
   }
 
+  console.log("hello,world");
   return strArr.join("");
 };
 s = "We are happy.";
