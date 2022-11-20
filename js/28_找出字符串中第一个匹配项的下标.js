@@ -16,6 +16,46 @@
  */
 
 //kmp算法
-var strStr = function (haystack, needle) {};
+var strStr = function (haystack, needle) {
+  if (needle.length == 0) {
+    return 0;
+  }
+  let next = getNext(needle);
+  console.log("next", next);
+  let j = 0;
+  for (let i = 0; i < haystack.length; i++) {
+    while (j > 0 && haystack[i] != needle[j]) {
+      j = next[j - 1];
+    }
+    if (haystack[i] == needle[j]) {
+      j++;
+    }
+    if (j == needle.length) {
+      console.log("j", j);
+      console.log("need.length", needle.length);
+      return i - needle.length + 1;
+    }
+  }
 
-console.log("hello,world");
+  return -1;
+};
+
+var getNext = function (s) {
+  let next = [];
+  let j = 0;
+  next.push(j);
+  for (let i = 1; i < s.length; i++) {
+    while (j > 0 && s[i] != s[j]) {
+      j = next[j - 1];
+    }
+    if (s[i] == s[j]) {
+      j++;
+    }
+    next.push(j);
+  }
+  return next;
+};
+
+var s1 = "sadbutsad";
+var s2 = "sad";
+console.log(strStr(s1, s2));
