@@ -42,6 +42,7 @@ var postorderTraversal = function (root) {
     } else {
       continue;
     }
+    // 前序遍历的基础上交换左右孩子结点的压栈顺序，然后再翻转数组就行了
     stack.push(cur.left);
     stack.push(cur.right);
   }
