@@ -9,6 +9,7 @@
 /**
  * @param {TreeNode} root
  * @return {number[]}
+ * 递归法
  */
 var postorderTraversal = function (root) {
   let res = [];
@@ -21,4 +22,28 @@ var postorderTraversal = function (root) {
 
   dfs(root);
   return res;
+};
+
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ * 迭代法
+ */
+var postorderTraversal = function (root) {
+  let res = [];
+  if (!root) return res;
+  let stack = [];
+  stack.push(root);
+  let cur = null;
+  while (stack.length) {
+    cur = stack.pop();
+    if (cur != null) {
+      res.push(cur.val);
+    } else {
+      continue;
+    }
+    stack.push(cur.left);
+    stack.push(cur.right);
+  }
+  return res.reverse();
 };
