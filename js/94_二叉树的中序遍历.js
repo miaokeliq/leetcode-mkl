@@ -8,7 +8,7 @@
  */
 /**
  * @param {TreeNode} root
- * @return {number[]}
+ * @return {number[]} 递归法
  */
 var inorderTraversal = function (root) {
   let res = [];
@@ -20,5 +20,27 @@ var inorderTraversal = function (root) {
   };
 
   dfs(root);
+  return res;
+};
+
+/**
+ * @param {TreeNode} root
+ * @return {number[]} 迭代法
+ */
+var inorderTraversal = function (root) {
+  let res = [];
+  let stack = [];
+  let cur = root;
+  while (cur != null || stack.length != 0) {
+    //因为只有同时为空才结束，所以这里while判断应该是或
+    if (cur != null) {
+      stack.push(cur);
+      cur = cur.left;
+    } else {
+      cur = stack.pop();
+      res.push(cur.val);
+      cur = cur.right;
+    }
+  }
   return res;
 };
