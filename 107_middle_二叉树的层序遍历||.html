@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>二叉树的层序遍历2</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val, left, right) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.left = (left===undefined ? null : left)
+       *     this.right = (right===undefined ? null : right)
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @return {number[][]}
+       */
+      var levelOrderBottom = function (root) {
+        //二叉树的层序遍历
+        let res = []; //定义最后return的二维数组
+        let queue = []; //定义使用的队列，同样用数组代替
+        queue.push(root);
+        if (root === null) return res; //如果传入的结点是空的就直接返回空数组；
+
+        while (queue.length !== 0) {
+          // 当队列为空时，就代表层序遍历已经没有元素了，就中止循环
+          let size = queue.length; // size记录当前层级的节点数
+          let curLevel = []; // 存放每一层节点的一维数组
+          for (let i = 0; i < size; i++) {
+            let node = queue.shift(); // 弹出队列第一个结点
+            curLevel.push(node.val); // 将弹出的结点放入当前一维数组
+            //存放当前层下一层节点
+            node.left && queue.push(node.left);
+            node.right && queue.push(node.right);
+          }
+          //把每一层的结果放在结果数组。
+          //从数组前面插入值，避免最后反转数组，减少运算时间。
+          res.unshift(curLevel);
+          // unshift()方法将一个或多个元素添加到数组的开头，并返回该数组的新长度。
+        }
+        return res;
+      };
+    </script>
+  </body>
+</html>
