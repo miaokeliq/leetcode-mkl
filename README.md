@@ -1,5 +1,10 @@
 # leetcode-mkl
 
+- Using JavaScript language to solve data structure problems
+- The methods used are the easiest to understand
+- The Chinese and English detailed explanations of each question will be updated later.
+- The code of all questions is operational.If it's helpful for you, please star it .I'm really appreciate it :)
+
 ### 448.找到所有数组中消失的数字
 
 > [448. 找到所有数组中消失的数字 - 力扣（LeetCode）](https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/)
