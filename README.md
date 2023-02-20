@@ -133,3 +133,150 @@
 > [454.四数相加 2⃣️](https://leetcode.cn/problems/4sum-ii/)
 
 - 2022/11/05 使用 map 当哈希表来解决
+
+### 541.反转字符串 2⃣️
+
+> [541.反转字符串 2⃣️](https://leetcode.cn/problems/reverse-string-ii/description/)
+
+- 2022/11/12 使用双指针解决
+
+### 344.反转字符串
+
+> [344.反转字符串](https://leetcode.cn/problems/reverse-string/)
+
+- 2022/11/12 使用双指针解决
+
+### 剑指 offer 05.替换空格
+
+> [剑指 offer05.替换空格](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/description/)
+
+- 2022/11/12 使用双指针解决
+
+### 151.反转字符串中的单词
+
+> [151.反转字符串中的单词](https://leetcode.cn/problems/reverse-words-in-a-string/)
+
+- 2022/11/18 使用双指针解决
+
+### 剑指 offer 58 - 2⃣️。.左旋转字符串
+
+> [剑指 offer 58 - 2⃣️。.左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/description/)
+
+- 2022/11/19 反复旋转字符串，然后使用双指针实现旋转`reverse()`方法解决
+
+### 28.找出字符串中第一个匹配项的下标
+
+> [28.找出字符串中第一个匹配项的下标](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/)
+
+- 2022/11/20 kmp 算法
+
+### 459. 重复的子字符串
+
+> [459. 重复的子字符串](https://leetcode.cn/problems/repeated-substring-pattern/description/)
+
+- 2022/11/20 kmp 算法
+
+### 232. 用栈实现队列
+
+> [232. 用栈实现队列](https://leetcode.cn/problems/implement-queue-using-stacks/description/)
+
+- 2022/11/20 用栈实现队列（栈就相当于用数组来实现）
+
+### 225. 用队列实现栈
+
+> [225. 用队列实现栈](https://leetcode.cn/problems/implement-stack-using-queues/description/)
+
+- 2022/11/20 用队列实现栈（用数组的`push()` 和 `shift()`库函数实现）
+
+### 20. 有效的括号
+
+> [20. 有效的括号](https://leetcode.cn/problems/valid-parentheses/description/)
+
+- 2022/11/24 用栈模拟过程实现
+
+### 1047. 删除字符串中的所有相邻重复项
+
+> [1047.删除字符串中的所有相邻重复项](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/description/)
+
+- 2022/11/24 用栈模拟实现过程，跟第 20 题类似的思路
+
+### 239. 滑动窗口最大值
+
+> [239.滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/)
+
+- 2022/12/14 单调队列的应用
+
+### 144. 二叉树的前序遍历
+
+> [144.二叉树的前序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
+
+- 2022/12/15 迭代法实现深度优先遍历
+- 2022/02/06 递归法实现
+
+### 145. 二叉树的后序遍历
+
+> [145.二叉树的后序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
+
+- 2022/12/15 迭代法实现深度优先遍历
+- 2022/02/06 递归法实现
+
+### 94. 二叉树的中序遍历
+
+> [94.二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
+
+- 2022/12/15 迭代法实现深度优先遍历
+- 2022/02/06 递归法实现
+
+### 429.N 叉树的层序遍历
+
+> [N 叉树的层序遍历](https://leetcode.cn/problems/n-ary-tree-level-order-traversal/)
+
+- 2022/02/06 初学层序遍历算法
+
+### 637.二叉树的层平均值
+
+> [二叉树的层平均值](https://leetcode.cn/problems/average-of-levels-in-binary-tree/)
+
+- 2022/02/06 在层序遍历的基础上稍作修改
+
+### 199.二叉树的右视图
+
+> [二叉树的右视图](https://leetcode.cn/problems/binary-tree-right-side-view/)
+
+- 2022/02/06 在层序遍历的基础上稍作修改
+
+### 107.二叉树的层次遍历 2⃣️
+
+> [二叉树的层次遍历 2⃣️](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/)
+
+- 2022/02/06 在层序遍历的基础上稍作修改
+
+### 226.翻转二叉树
+
+> [翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/)
+
+- 2022/02/07 递归法 前序后序遍历
+
+### 101. 对称二叉树
+
+> [对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
+
+- 2022/02/07 递归法 后序遍历
+
+### 104.二叉树的最大深度
+
+> [二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)
+
+- 2022/02/07 递归法 后序遍历
+
+### 111.二叉树的最小深度
+
+> [二叉树的最小深度](https://leetcode.cn/problems/minimum-depth-of-binary-tree/)
+
+- 2023/02/20 后序遍历 递归法
+
+### 222.完全二叉树的节点个数
+
+> [完全二叉树的节点个数](https://leetcode.cn/problems/count-complete-tree-nodes/)
+
+- 2023/02/20 后序遍历 递归法 想要考虑完全二叉树的特性
