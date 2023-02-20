@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val, left, right) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.left = (left===undefined ? null : left)
+       *     this.right = (right===undefined ? null : right)
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @return {number}
+           后序遍历   ，左右中
+       */
+      var countNodes = function (root) {
+        // 2. 确定终止条件
+        /*
+        if (root === null) return 0;
+        let leftNum = countNodes(root.left);
+        let rightNum = countNodes(root.right);
+        result = leftNum + rightNum + 1;
+        return result;
+*/
+        if (root === null) return 0;
+        let left = root.left;
+        let right = root.right;
+        let leftDepth = 0;
+        let rightDepth = 0;
+        while (left) {
+          left = left.left;
+          leftDepth++;
+        }
+        while (right) {
+          right = right.right;
+          rightDepth++;
+        }
+        if (leftDepth === rightDepth) return 2 ** (leftDepth + 1) - 1;
+        return 1 + countNodes(root.left) + countNodes(root.right);
+      };
+    </script>
+  </body>
+</html>
