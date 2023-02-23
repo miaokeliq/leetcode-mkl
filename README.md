@@ -303,4 +303,10 @@
 
 > [找树左下角的值](https://leetcode.cn/problems/find-bottom-left-tree-value/)
 
-- 2023/02/23
+- 2023/02/23 用到回溯
+
+### 112.路径总和
+
+> [路径总和](https://leetcode.cn/problems/path-sum/)
+
+- 2023/02/23 用到回溯
