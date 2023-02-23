@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val, left, right) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.left = (left===undefined ? null : left)
+       *     this.right = (right===undefined ? null : right)
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @return {string[]}
+       */
+      var binaryTreePaths = function (root) {
+        let result = [];
+        if (root === null) return result;
+
+        // 1. 确定递归函数 函数参数
+        const pathHelper = function (root, curPath) {
+          // 2. 确定终止条件，到叶子节点就终止
+          if (root.left === null && root.right === null) {
+            curPath += root.val;
+            result.push(curPath);
+            return;
+          }
+          curPath += root.val + "->";
+          root.left && pathHelper(root.left, curPath);
+          root.right && pathHelper(root.right, curPath);
+        };
+        pathHelper(root, "");
+        return result;
+      };
+    </script>
+  </body>
+</html>

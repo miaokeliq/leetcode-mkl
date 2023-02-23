@@ -27,10 +27,10 @@
        */
       var maxDepth = function (root) {
         if (!root) return 0; // 空节点的高度是0
-
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right)); // 精简版
 
-        /*  标准版
+        /*  
+        标准版
         let leftHeight = maxDepth(root.left); // 左 计算高度返回给上一层
         let rightHeight = maxDepth(root.right); // 右
         let height = 1 + Math.max(leftHeight, rightHeight); // 中   处理过程

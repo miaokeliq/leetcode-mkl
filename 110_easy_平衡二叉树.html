@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val, left, right) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.left = (left===undefined ? null : left)
+       *     this.right = (right===undefined ? null : right)
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @return {boolean}
+         高度: 指从该节点到叶子节点的最长简单路径边的条数
+       */
+      var isBalanced = function (root) {
+        return getHeight(root) === -1 ? false : true;
+      };
+
+      function getHeight(node) {
+        if (node === null) {
+          return 0;
+        }
+
+        let leftHeight = getHeight(node.left);
+        if (leftHeight === -1) return -1;
+
+        let rightHeight = getHeight(node.right);
+        if (rightHeight === -1) return -1;
+
+        let result =
+          Math.abs(leftHeight - rightHeight) <= 1
+            ? 1 + Math.max(leftHeight, rightHeight)
+            : -1;
+        return result;
+      }
+    </script>
+  </body>
+</html>
