@@ -280,3 +280,15 @@
 > [完全二叉树的节点个数](https://leetcode.cn/problems/count-complete-tree-nodes/)
 
 - 2023/02/20 后序遍历 递归法 想要考虑完全二叉树的特性
+
+### 110.平衡二叉树
+
+> [平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/)
+
+- 2023/02/23 后序遍历 需要计算高度，并返回给父节点做判断
+
+### 257.二叉树的所有路径
+
+> [二叉树的所有路径](https://leetcode.cn/problems/binary-tree-paths/)
+
+- 2023/02/23 前序遍历 需要先计算路径，然后传给子节点
