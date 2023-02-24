@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number} n
+       * @param {number} k
+       * @return {number[][]}
+
+         回溯三部曲
+         1. 确定递归函数参数返回值
+         2. 确定终止条件
+         3. 确定单层递归逻辑
+       */
+      var combine = function (n, k) {
+        let result = [];
+        let path = [];
+        const combineHelper = function (n, k, startIndex) {
+          console.log(path.length === k);
+
+          if (path.length === k) {
+            console.log(path);
+            result.push([...path]);
+            //result.push(path);
+
+            /*
+在这段代码中，result.push(path)实际上是将对path的引用添加到了result数组中。
+因为JavaScript中的数组是对象，当将数组变量添加到另一个数组中时，实际上只是
+添加了一个对该数组的引用。因此，当你更改原始数组（path）时，添加到result中
+的数组也会更改。
+
+解决方法是将原始数组的副本添加到result中，而不是添加引用。这可以通过使用
+[...path]创建一个数组的副本来实现，所以可以将result.push(path)替换
+为result.push([...path])。这样，result中的每个数组都将是对原始path数组的
+副本，而不是对它的引用。
+
+
+
+
+
+
+*/
+            console.log(result);
+            return;
+          }
+          for (let i = startIndex; i <= n; i++) {
+            path.push(i);
+            result.push(path);
+            combineHelper(n, k, i + 1);
+            path.pop();
+          }
+        };
+        combineHelper(n, k, 1);
+        return result;
+      };
+
+      console.log(combine(4, 2));
+    </script>
+  </body>
+</html>
