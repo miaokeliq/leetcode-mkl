@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number} k
+       * @param {number} n
+       * @return {number[][]}
+       */
+
+      var combinationSum3 = function (k, n) {
+        let path = [];
+        let result = [];
+        let sum = 0;
+        const combinaHelper = (path, startIndex) => {
+          if (sum > n) {
+            return;
+          }
+          if (path.length === k) {
+            if (sum === n) {
+              result.push([...path]);
+              return;
+            }
+          }
+
+          for (let i = startIndex; i <= 9 - (k - path.length) + 1; i++) {
+            sum += i;
+            path.push(i);
+            combinaHelper(path, i + 1);
+            sum -= i;
+            path.pop();
+          }
+        };
+        combinaHelper(path, 1);
+        return result;
+      };
+    </script>
+  </body>
+</html>
