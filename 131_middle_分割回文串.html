@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} s
+       * @return {string[][]}
+            1. 确定递归函数的参数和返回值
+            2. 确定终止条件
+            3. 单层搜索的逻辑j
+       */
+      var partition = function (s) {
+        let path = [];
+        let result = [];
+
+        let backTracking = (startIndex) => {
+          // startIndex 是切割线j
+          if (startIndex >= s.length) {
+            result.push([...path]);
+            return;
+          }
+
+          for (let i = startIndex; i < s.length; i++) {
+            if (isPalindrome(s, startIndex, i)) {
+              path.push(s.slice(startIndex, i + 1));
+            } else {
+              continue;
+            }
+            backTracking(i + 1);
+            path.pop();
+          }
+        };
+
+        backTracking(0);
+        return result;
+      };
+
+      const isPalindrome = function (s, l, r) {
+        for (let i = l, j = r; i < j; i++, j--) {
+          if (s[i] !== s[j]) return false;
+        }
+        return true;
+      };
+    </script>
+  </body>
+</html>

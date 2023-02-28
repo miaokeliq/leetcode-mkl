@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} candidates
+       * @param {number} target
+       * @return {number[][]}
+       */
+      var combinationSum = function (candidates, target) {
+        // 1. 确定函数参数和返回值（一般都是 void）
+        // 2. 确定终止条件 （有递归就一定要有终止，不然会死循环）
+        // 3. 确定单层搜索逻辑
+
+        let result = [];
+        let path = [];
+        let sum = 0;
+        candidates.sort((a, b) => a - b);
+        let backTracking = (startIndex) => {
+          // 终止条件
+          if (sum > target) {
+            return;
+          } else if (sum === target) {
+            result.push([...path]);
+            return;
+          }
+
+          for (let i = startIndex; i < candidates.length; i++) {
+            if (sum + candidates[i] > target) break; // 剪枝
+            path.push(candidates[i]);
+            sum += candidates[i];
+            backTracking(i);
+            // 回溯
+            sum -= candidates[i];
+            path.pop();
+          }
+        };
+
+        backTracking(0);
+        return result;
+      };
+    </script>
+  </body>
+</html>

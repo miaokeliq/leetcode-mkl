@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} candidates
+       * @param {number} target
+       * @return {number[][]}
+       */
+      var combinationSum2 = function (candidates, target) {
+        let path = [];
+        let result = [];
+        let sum = 0;
+        let used = new Array(candidates.length).fill(false);
+        candidates.sort((a, b) => a - b);
+
+        let backTracking = (startIndex) => {
+          if (sum > target) {
+            return;
+          }
+          if (sum === target) {
+            result.push([...path]);
+            return;
+          }
+
+          for (let i = startIndex; i < candidates.length; i++) {
+            if (
+              i > 0 &&
+              candidates[i] === candidates[i - 1] &&
+              used[i - 1] === false
+            ) {
+              continue;
+            }
+
+            path.push(candidates[i]);
+            sum += candidates[i];
+            used[i] = true;
+            backTracking(i + 1);
+            sum -= candidates[i];
+            path.pop();
+            used[i] = false;
+          }
+        };
+
+        backTracking(0);
+        return result;
+      };
+    </script>
+  </body>
+</html>
