@@ -10,8 +10,27 @@
       /**
        * @param {number[]} nums
        * @return {number[][]}
+
+         空集也是子集
        */
-      var subsets = function (nums) {};
+      var subsets = function (nums) {
+        let result = [];
+        let path = [];
+
+        let backTracking = (startIndex) => {
+          result.push([...path]);
+          if (startIndex >= nums.length) return;
+
+          for (let i = startIndex; i < nums.length; i++) {
+            path.push(nums[i]);
+            backTracking(i + 1);
+            path.pop();
+          }
+        };
+
+        backTracking(0);
+        return result;
+      };
     </script>
   </body>
 </html>
