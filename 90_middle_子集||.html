@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} nums
+       * @return {number[][]}
+       */
+      var subsetsWithDup = function (nums) {
+        let result = [];
+        let path = [];
+        let used = new Array(nums.length).fill(false);
+        nums.sort((a, b) => a - b);
+        let backTracking = (startIndex) => {
+          result.push([...path]);
+          if (startIndex >= nums.length) return;
+
+          for (let i = startIndex; i < nums.length; i++) {
+            if (i > 0 && nums[i] === nums[i - 1] && used[i - 1] === false) {
+              continue;
+            }
+            path.push(nums[i]);
+            used[i] = true;
+            backTracking(i + 1);
+            path.pop();
+            used[i] = false;
+          }
+        };
+
+        backTracking(0);
+        return result;
+      };
+    </script>
+  </body>
+</html>
