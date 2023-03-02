@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number} n
+       * @return {number}
+
+          1. 确定 dp[i] 的含义
+             dp[i] 对 i 进行拆分，拆分之后得到的最大的乘积为 dp[i]
+
+          2. 确定递推公式
+
+
+          3. 初始化
+
+       */
+      var integerBreak = function (n) {
+        let dp = new Array(n + 1).fill(0);
+        dp[2] = 1;
+
+        for (let i = 3; i <= n; i++) {
+          for (let j = 1; j <= i / 2; j++) {
+            dp[i] = Math.max(dp[i], j * (i - j), j * dp[i - j]);
+          }
+        }
+
+        return dp[n];
+      };
+    </script>
+  </body>
+</html>

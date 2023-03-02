@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} cost
+       * @return {number}
+          1. dp 数组含义
+             dp[i] 表示 到达下标 i 的位置所需要的花费为 dp[i]
+
+          2. 递推公式
+             dp[i] =  Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]) 
+          
+          3. 初始化
+             dp[0] = 0, dp[1] = 0
+
+          4. 遍历顺序
+             从前到后
+
+          5. 打印 dp 数组
+
+
+       */
+      var minCostClimbingStairs = function (cost) {
+        let dp = [0, 0];
+        for (let i = 2; i <= cost.length; i++) {
+          dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+        }
+
+        return dp[cost.length];
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number} m
+       * @param {number} n
+       * @return {number}
+          1. 确定 dp 数组的含义
+              dp[i][j] 从（0，0）到（i，j）有多少种路径
+
+          2. 确定递推公式
+              dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+
+          3. 初始化
+              for(let i = 0; i < m; i++) dp[i][0] = 1
+              for(let j = 0; j < n; j++) dp[0][j] = 1
+
+          4. 确定递推顺序
+              从左往右遍历，从上往下遍历
+
+          5. 打印 dp 数组
+
+
+       */
+      var uniquePaths = function (m, n) {
+        let dp = new Array(m).fill(0).map((item) => new Array(n));
+
+        for (let i = 0; i < m; i++) dp[i][0] = 1;
+        for (let j = 0; j < n; j++) dp[0][j] = 1;
+
+        for (let i = 1; i < m; i++) {
+          for (let j = 1; j < n; j++) {
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+          }
+        }
+
+        return dp[m - 1][n - 1];
+      };
+    </script>
+  </body>
+</html>
