@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>二叉树的最近公共祖先</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * Definition for a binary tree node.
+       * function TreeNode(val) {
+       *     this.val = val;
+       *     this.left = this.right = null;
+       * }
+       */
+      /**
+       * @param {TreeNode} root
+       * @param {TreeNode} p
+       * @param {TreeNode} q
+       * @return {TreeNode}
+       */
+      var lowestCommonAncestor = function (root, p, q) {
+        if (!root) return null;
+
+        const helperFn = (root) => {
+          if (!root) return null;
+          if (root === p || root === q) {
+            return root;
+          }
+
+          // 左
+          let left = helperFn(root.left);
+
+          // 右
+          let right = helperFn(root.right);
+
+          if (!left && right) {
+            return right;
+          } else if (!right && left) {
+            return left;
+          } else if (!left && !right) {
+            return null;
+          }
+          if (!left && !right) {
+            return root;
+          }
+        };
+
+        let res = helperFn(root);
+        return res;
+      };
+    </script>
+  </body>
+</html>
