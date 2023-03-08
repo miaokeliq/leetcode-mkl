@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>N皇后问题</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param n int整型 the n
+       * @return int整型
+       */
+      function Nqueen(n) {
+        // write code here
+        let res = [];
+        let chessBoard = new Array(n).fill().map(() => new Array(n).fill("."));
+        let row = 0;
+        backTracking(res, chessBoard, n, row);
+      }
+
+      function backTracking(res, chessBoard, n, row) {
+        if (row === n) {
+          res.push(transformChessBoard(chessBoard));
+          return;
+        }
+
+        for (let i = 0; i < n; i++) {
+          if (isValid(chessBoard, i, row, n)) {
+            chessBoard[row][i] = "Q";
+            backTracking(res, chessBoard, n, row + 1);
+            chessBoard[row][i] = ".";
+          }
+        }
+      }
+
+      function transformChessBoard(chessBoard) {
+        let resultBoard = [];
+        chessBoard.forEach((row) => {
+          let rowStr = "";
+          row.forEach((col) => {
+            rowStr += col;
+          });
+          resultBoard.push(rowStr);
+        });
+
+        return resultBoard;
+      }
+
+      function isValid(chessBoard, col, row, n) {
+        for (let i = 0; i < row; i++) {
+          if (chessBoard[i][col] === "Q") {
+            return false;
+          }
+        }
+
+        for (let i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+          if (chessBoard[i][j] === "Q") {
+            return false;
+          }
+        }
+
+        for (let i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+          if (chessBoard[i][j] === "Q") {
+            return false;
+          }
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>

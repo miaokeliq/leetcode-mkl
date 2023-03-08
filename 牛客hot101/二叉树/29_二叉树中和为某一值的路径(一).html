@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>二叉树中和为某一值的路径(一)</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /*
+       * function TreeNode(x) {
+       *   this.val = x;
+       *   this.left = null;
+       *   this.right = null;
+       * }
+       */
+
+      /**
+       *
+       * @param root TreeNode类
+       * @param sum int整型
+       * @return bool布尔型
+       */
+      function hasPathSum(root, sum) {
+        // write code here
+
+        if (!root) {
+          return false;
+        }
+        const getSum = (root, sum) => {
+          if (!root) {
+            return false;
+          }
+          if (!root.left && !root.right && sum === root.val) {
+            return true;
+          }
+
+          return (
+            getSum(root.left, sum - root.val) ||
+            getSum(root.right, sum - root.val)
+          );
+        };
+
+        return getSum(root, sum);
+      }
+    </script>
+  </body>
+</html>

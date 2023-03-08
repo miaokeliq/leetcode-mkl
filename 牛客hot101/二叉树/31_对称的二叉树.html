@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>对称的二叉树</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+      function isSymmetrical(pRoot) {
+        // write code here
+
+        const compare = (left, right) => {
+          if (!left && !right) {
+            return true;
+          }
+          if (!left && right) {
+            return false;
+          }
+          if (left && !right) {
+            return false;
+          }
+          if (left.val !== right.val) {
+            return false;
+          }
+
+          let outSide = compare(left.left, right.right);
+          let inSide = compare(left.right, right.left);
+
+          let result = outSide && inSide;
+
+          return result;
+        };
+
+        if (!pRoot) {
+          return true;
+        }
+
+        return compare(pRoot.left, pRoot.right);
+      }
+    </script>
+  </body>
+</html>

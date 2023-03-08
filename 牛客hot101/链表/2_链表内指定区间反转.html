@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>链表内指定区间反转</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param head ListNode类
+       * @param m int整型
+       * @param n int整型
+       * @return ListNode类
+       */
+      function reverseBetween(head, m, n) {
+        // write code here
+        let res = new ListNode(-1);
+        let pre = res;
+        res.next = head;
+        cur = head;
+
+        for (let i = 1; i < m; i++) {
+          pre = cur;
+          cur = cur.next;
+        }
+
+        for (let i = m; i < n; i++) {
+          let temp = cur.next;
+          cur.next = temp.next;
+          temp.next = pre.next;
+          pre.next = temp;
+        }
+
+        return res.next;
+      }
+    </script>
+  </body>
+</html>

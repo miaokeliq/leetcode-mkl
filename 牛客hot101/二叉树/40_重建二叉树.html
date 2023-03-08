@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>重建二叉树</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+      function reConstructBinaryTree(pre, vin) {
+        // write code here
+        let m = pre.length;
+        let n = vin.length;
+
+        if (!m || !n) {
+          return null;
+        }
+        let root = new TreeNode(pre[0]);
+        for (let i = 0; i < n; i++) {
+          if (vin[i] === pre[0]) {
+            root.left = reConstructBinaryTree(
+              pre.slice(1, i + 1),
+              vin.slice(0, i)
+            );
+            root.right = reConstructBinaryTree(
+              pre.slice(i + 1, m),
+              vin.slice(i + 1, n)
+            );
+            break;
+          }
+        }
+        return root;
+      }
+    </script>
+  </body>
+</html>

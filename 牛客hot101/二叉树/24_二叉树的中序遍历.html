@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>二叉树的中序遍历</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+       *
+       *
+       * @param root TreeNode类
+       * @return int整型一维数组
+       */
+      function inorderTraversal(root) {
+        // write code here
+        let res = [];
+
+        const dfs = (root) => {
+          if (!root) {
+            return;
+          }
+
+          dfs(root.left);
+          res.push(root.val);
+          dfs(root.right);
+        };
+
+        dfs(root);
+        return res;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>合并两个排序的链表</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      function Merge(pHead1, pHead2) {
+        // write code here
+        if (pHead1 == null) {
+          return pHead2;
+        } else if (pHead2 == null) {
+          return pHead1;
+        }
+
+        let res = new ListNode(-1);
+        let cur = res;
+
+        while (pHead1 && pHead2) {
+          if (pHead1.val <= pHead2.val) {
+            cur.next = pHead1;
+
+            pHead1 = pHead1.next;
+          } else {
+            cur.next = pHead2;
+            pHead2 = pHead2.next;
+          }
+
+          cur = cur.next;
+        }
+
+        if (pHead1) {
+          cur.next = pHead1;
+        } else {
+          cur.next = pHead2;
+        }
+
+        return res.next;
+      }
+    </script>
+  </body>
+</html>

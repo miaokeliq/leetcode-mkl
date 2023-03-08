@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>二叉树的镜像</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /*
+       * function TreeNode(x) {
+       *   this.val = x;
+       *   this.left = null;
+       *   this.right = null;
+       * }
+       */
+      /**
+       * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+       *
+       *
+       * @param pRoot TreeNode类
+       * @return TreeNode类
+       */
+      function Mirror(pRoot) {
+        // write code here
+        if (!pRoot) return pRoot;
+
+        const mirrorHelper = (pRoot) => {
+          if (!pRoot) {
+            return null;
+          }
+
+          [pRoot.left, pRoot.right] = [pRoot.right, pRoot.left];
+          mirrorHelper(pRoot.left);
+          mirrorHelper(pRoot.right);
+
+          return pRoot;
+        };
+
+        return mirrorHelper(pRoot);
+      }
+    </script>
+  </body>
+</html>

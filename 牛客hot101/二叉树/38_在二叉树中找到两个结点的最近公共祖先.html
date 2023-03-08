@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>在二叉树中找到两个结点的最近公共祖先</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /*
+       * function TreeNode(x) {
+       *   this.val = x;
+       *   this.left = null;
+       *   this.right = null;
+       * }
+       */
+
+      /**
+       *
+       * @param root TreeNode类
+       * @param o1 int整型
+       * @param o2 int整型
+       * @return int整型
+       */
+      function lowestCommonAncestor(root, o1, o2) {
+        // write code here
+        if (!root) return null;
+
+        const helperFn = (root, o1, o2) => {
+          if (!root) return null;
+
+          if (root.val === o1 || root.val === o2) {
+            return root;
+          }
+
+          let left = helperFn(root.left, o1, o2);
+          let right = helperFn(root.right, o1, o2);
+
+          if (left && right) {
+            return root;
+          } else if (!left && right) {
+            return right;
+          } else if (left && !right) {
+            return left;
+          }
+        };
+
+        let result = helperFn(root, o1, o2);
+        return result.val;
+      }
+    </script>
+  </body>
+</html>

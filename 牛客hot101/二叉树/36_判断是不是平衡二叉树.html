@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>判断是不是平衡二叉树</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+      function IsBalanced_Solution(pRoot) {
+        // write code here
+        if (!pRoot) return true;
+
+        const isBalanced = (root) => {
+          if (!root) return 0;
+
+          let leftHeight = isBalanced(root.left);
+          if (leftHeight === -1) return -1;
+
+          let rightHeight = isBalanced(root.right);
+          if (rightHeight === -1) return -1;
+
+          let result;
+          if (Math.abs(leftHeight - rightHeight) <= 1) {
+            result = 1 + Math.max(leftHeight, rightHeight);
+          } else {
+            result = -1;
+          }
+
+          return result;
+        };
+
+        return isBalanced(pRoot) !== -1 ? true : false;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>没有重复项数字的全排列</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param num int整型一维数组
+       * @return int整型二维数组
+       */
+      function permute(num) {
+        // write code here
+
+        let res = [];
+        let path = [];
+        let k = num.length;
+        let used = new Array(k).fill(0);
+        function backTracking(path, used, k) {
+          if (path.length === k) {
+            res.push([...path]);
+            return;
+          }
+
+          for (let i = 0; i < k; i++) {
+            if (used[i]) continue;
+            path.push(num[i]);
+            used[i] = 1;
+            backTracking(path, used, k);
+            path.pop();
+            used[i] = 0;
+          }
+        }
+
+        backTracking(path, used, k);
+
+        return res;
+      }
+    </script>
+  </body>
+</html>

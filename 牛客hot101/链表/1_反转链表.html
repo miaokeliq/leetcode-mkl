@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>反转链表</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      var reverseList = function (head) {
+        let pre = null;
+        let cur = head;
+        while (cur) {
+          let next = cur.next;
+          cur.next = pre;
+          pre = cur;
+          cur = next;
+        }
+
+        return pre;
+      };
+    </script>
+  </body>
+</html>

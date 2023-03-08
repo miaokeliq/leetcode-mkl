@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>二叉搜索树与双向链表</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      var resList = [];
+      function Convert(pRootOfTree) {
+        // write code here
+        if (!pRootOfTree) {
+          return pRootOfTree;
+        }
+
+        inorder(pRootOfTree);
+
+        for (let i = 0; i < resList.length - 1; i++) {
+          resList[i].right = resList[i + 1];
+          resList[i + 1].left = resList[i];
+        }
+
+        return resList[0];
+      }
+
+      function inorder(root) {
+        if (!root) {
+          return;
+        }
+
+        inorder(root.left);
+        resList.push(root);
+        inorder(root.right);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>链表的奇偶重排</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+       *
+       *
+       * @param head ListNode类
+       * @return ListNode类
+       */
+      function oddEvenList(head) {
+        // write code here
+        if (!head) {
+          return head;
+        }
+
+        let odd = head;
+        let even = head.next;
+        let evenHead = head;
+
+        while (even && even.next) {
+          odd.next = even.next;
+          odd = odd.next;
+          even.next = odd.next;
+          even = even.next;
+        }
+
+        odd.next = evenHead;
+        return head;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>包含min函数的栈</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      var stack = [];
+      var stackMin = [];
+      function push(node) {
+        // write code here
+        if (stack.length === 0) {
+          stackMin.push(node);
+        } else {
+          if (node <= stackMin[stackMin.length - 1]) {
+            stackMin.push(node);
+          } else if (node > stackMin[stackMin.length - 1]) {
+            stackMin.push(stackMin[stackMin.length - 1]);
+          }
+        }
+
+        stack.push(node);
+      }
+      function pop() {
+        // write code here
+        if (stack.length === 0) {
+          return null;
+        } else {
+          stack.pop();
+          stackMin.pop();
+        }
+      }
+      function top() {
+        // write code here
+        let res = stack[stack.length - 1];
+        return res;
+      }
+      function min() {
+        // write code here
+
+        let res = stackMin[stackMin.length - 1];
+        return res;
+      }
+    </script>
+  </body>
+</html>

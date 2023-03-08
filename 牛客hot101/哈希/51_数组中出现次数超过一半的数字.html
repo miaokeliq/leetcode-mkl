@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>数组中出现次数超过一半的数字</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      function MoreThanHalfNum_Solution(numbers) {
+        // write code here
+        numbers.sort((a, b) => a - b);
+
+        return numbers[Math.floor(numbers.length / 2)];
+      }
+    </script>
+  </body>
+</html>

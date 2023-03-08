@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>三数之和</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param num int整型一维数组
+       * @return int整型二维数组
+       */
+      function threeSum(num) {
+        // write code here
+        let res = [];
+        num.sort((a, b) => a - b);
+        for (let i = 0; i < num.length; i++) {
+          if (num[i] > 0) {
+            return result;
+          }
+
+          if (i > 0 && num[i] === num[i - 1]) {
+            continue;
+          }
+
+          let left = i + 1;
+          let right = num.length - 1;
+
+          while (left < right) {
+            if (num[i] + num[left] + num[right] > 0) {
+              right--;
+            } else if (num[i] + num[left] + num[right] < 0) {
+              left++;
+            } else {
+              res.push([num[i], num[left], num[right]]);
+              while (left < right && num[right] === num[right - 1]) right--;
+              while (left < right && num[left] === num[left + 1]) left++;
+              right--;
+              left++;
+            }
+          }
+        }
+
+        return res;
+      }
+    </script>
+  </body>
+</html>

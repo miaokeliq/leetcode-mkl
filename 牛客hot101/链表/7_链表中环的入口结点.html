@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>链表中环的入口结点</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /*function ListNode(x){
+    this.val = x;
+    this.next = null;
+}*/
+      function EntryNodeOfLoop(pHead) {
+        // write code here
+
+        if (pHead === null) return null;
+
+        let fast = pHead;
+        let slow = pHead;
+        while (fast !== null && fast.next !== null) {
+          fast = fast.next.next;
+
+          slow = slow.next;
+
+          if (fast === slow) {
+            break;
+          }
+        }
+
+        if (fast === null || fast.next === null) return null;
+
+        fast = pHead;
+
+        while (fast !== slow) {
+          fast = fast.next;
+          slow = slow.next;
+        }
+
+        return fast;
+      }
+    </script>
+  </body>
+</html>

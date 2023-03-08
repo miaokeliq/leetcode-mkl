@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>判断一个链表是否为回文结构</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param head ListNode类 the head
+       * @return bool布尔型
+       */
+      function isPail(head) {
+        // write code here
+
+        let fast = head;
+        let slow = head;
+
+        while (fast && fast.next) {
+          fast = fast.next.next;
+          slow = slow.next;
+        }
+
+        if (fast) {
+          slow = slow.next;
+        }
+
+        slow = reverse(slow);
+
+        fast = head;
+
+        while (slow) {
+          slow = slow.next;
+          fast = fast.next;
+          if (slow.val === fast.val) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      function reverse(head) {
+        if (!head) {
+          return null;
+        }
+
+        let cur = head;
+        let pre = null;
+        while (cur) {
+          let temp = cur.next;
+          cur.next = pre;
+          pre = cur;
+          cur = temp;
+        }
+
+        return pre;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>有效括号序列</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param s string字符串
+       * @return bool布尔型
+       */
+      function isValid(s) {
+        // write code here
+        let stack = [];
+
+        for (let i = 0; i < s.length; i++) {
+          switch (s[i]) {
+            case "(":
+            case "{":
+            case "[":
+              stack.push(s[i]);
+              break;
+            case ")":
+              if (!stack.length || stack[stack.length - 1] !== "(") {
+                return false;
+              } else {
+                stack.pop();
+              }
+              break;
+            case "}":
+              if (!stack.length || stack[stack.length - 1] !== "{") {
+                return false;
+              } else {
+                stack.pop();
+              }
+              break;
+            case "]":
+              if (!stack.length || stack[stack.length - 1] !== "[") {
+                return false;
+              } else {
+                stack.pop();
+              }
+              break;
+          }
+        }
+
+        return s.length ? false : true;
+      }
+    </script>
+  </body>
+</html>

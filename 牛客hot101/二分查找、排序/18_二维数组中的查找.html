@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>二维数组中的查找</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      function Find(target, array) {
+        // write code here
+        let r = array.length;
+        let c = array[0].length;
+        let i = r - 1;
+        let j = 0;
+        while (j < c && i >= 0) {
+          let temp = array[i][j];
+          if (temp === target) {
+            return true;
+          } else if (temp < target) {
+            j++;
+          } else {
+            i--;
+          }
+        }
+
+        return false;
+      }
+    </script>
+  </body>
+</html>

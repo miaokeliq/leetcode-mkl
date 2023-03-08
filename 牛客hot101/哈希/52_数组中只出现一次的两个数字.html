@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>数组中只出现一次的两个数字</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+       *
+       *
+       * @param array int整型一维数组
+       * @return int整型一维数组
+       */
+      function FindNumsAppearOnce(array) {
+        // write code here
+        let map = {};
+        let res = [];
+
+        for (let i = 0; i < array.length; i++) {
+          if (map.hasOwnProperty(array[i])) {
+            map[array[i]] += 1;
+          } else {
+            map[array[i]] = 1;
+          }
+        }
+
+        for (let i = 0; i < array.length; i++) {
+          if (map[array[i]] === 1) {
+            res.push(array[i]);
+          }
+        }
+
+        return res.sort((a, b) => a - b);
+      }
+    </script>
+  </body>
+</html>

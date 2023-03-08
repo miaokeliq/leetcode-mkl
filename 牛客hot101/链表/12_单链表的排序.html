@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>单链表的排序</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param head ListNode类 the head node
+       * @return ListNode类
+       */
+      function sortInList(head) {
+        // write code here
+        let array = [];
+
+        while (head) {
+          array.push(head.val);
+          head = head.next;
+        }
+
+        array.sort((a, b) => a - b);
+
+        let res = new ListNode(-1);
+        let cur = res;
+
+        for (let val of array) {
+          let tt = new ListNode(val);
+          cur.next = tt;
+          cur = cur.next;
+        }
+
+        return res.next;
+      }
+    </script>
+  </body>
+</html>

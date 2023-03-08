@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>输出二叉树的右视图</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+       * 求二叉树的右视图
+       * @param xianxu int整型一维数组 先序遍历
+       * @param zhongxu int整型一维数组 中序遍历
+       * @return int整型一维数组
+       */
+      function solve(xianxu, zhongxu) {
+        // write code here
+        let root = reConstructHelper(xianxu, zhongxu);
+
+        return rightSideView(root);
+      }
+
+      const reConstructHelper = function (pre, vin) {
+        let m = pre.length;
+        let n = vin.length;
+        if (!m || !n) {
+          return null;
+        }
+
+        let root = new TreeNode(pre[0]);
+        for (let i = 0; i < n; i++) {
+          if (pre[0] === vin[i]) {
+            root.left = reConstructHelper(pre.slice(1, i + 1), vin.slice(0, i));
+            root.right = reConstructHelper(
+              pre.slice(i + 1, m),
+              vin.slice(i + 1, n)
+            );
+
+            break;
+          }
+        }
+        return root;
+      };
+
+      const rightSideView = function (root) {
+        let nodes = [];
+        let depths = [];
+        let max_depth = -1;
+        let map = {};
+        nodes.push(root);
+        depths.push(0);
+        while (nodes.length) {
+          let node = nodes.pop();
+          let depth = depths.pop();
+          if (node) {
+            max_depth = Math.max(depth, max_depth);
+
+            if (!map[depth]) {
+              map[depth] = node.val;
+            }
+            nodes.push(node.left);
+            nodes.push(node.right);
+            depths.push(depth + 1);
+            depths.push(depth + 1);
+          }
+        }
+        let arr = [];
+        for (let i = 0; i <= max_depth; i++) {
+          arr.push(map[i]);
+        }
+
+        return arr;
+      };
+    </script>
+  </body>
+</html>

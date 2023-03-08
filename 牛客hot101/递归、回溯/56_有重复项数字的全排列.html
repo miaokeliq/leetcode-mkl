@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>有重复项数字的全排列</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param num int整型一维数组
+       * @return int整型二维数组
+       */
+      function permuteUnique(num) {
+        // write code here
+        let res = [];
+        let path = [];
+        let len = num.length;
+        let used = new Array(len).fill(0);
+        num.sort((a, b) => a - b);
+        const backTraking = (path, used, len) => {
+          if (path.length === len) {
+            res.push([...path]);
+            return;
+          }
+
+          for (let i = 0; i < len; i++) {
+            if (i > 0 && num[i] === num[i - 1] && used[i - 1] === 0) {
+              continue;
+            }
+
+            if (used[i]) {
+              continue;
+            }
+
+            path.push(num[i]);
+            used[i] = 1;
+            backTraking(path, used, len);
+            used[i] = 0;
+            path.pop();
+          }
+        };
+        backTraking(path, used, len);
+
+        return res;
+      }
+    </script>
+  </body>
+</html>

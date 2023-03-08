@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>二叉树的层序遍历</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param root TreeNode类
+       * @return int整型二维数组
+       */
+      function levelOrder(root) {
+        // write code here
+        let queue = [];
+        let res = [];
+        if (!root) {
+          return res;
+        }
+        if (root) {
+          queue.push(root);
+        }
+
+        while (queue.length) {
+          let size = queue.length;
+          let arr = [];
+          while (size) {
+            let node = queue.shift();
+            arr.push(node.val);
+            if (node.left) {
+              queue.push(node.left);
+            }
+            if (node.right) {
+              queue.push(node.right);
+            }
+            size--;
+          }
+          res.push(arr);
+        }
+
+        return res;
+      }
+    </script>
+  </body>
+</html>

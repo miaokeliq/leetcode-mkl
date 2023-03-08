@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>两数之和</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param numbers int整型一维数组
+       * @param target int整型
+       * @return int整型一维数组
+       */
+      function twoSum(numbers, target) {
+        // write code here
+        let map = {};
+        let res = [];
+        for (let i = 0; i < numbers.length; i++) {
+          if (map.hasOwnProperty(target - numbers[i])) {
+            res.push(map[target - numbers[i]] + 1);
+            res.push(i + 1);
+            return res;
+          } else {
+            map[numbers[i]] = i;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

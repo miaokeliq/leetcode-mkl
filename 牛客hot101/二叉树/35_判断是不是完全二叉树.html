@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>判断是不是完全二叉树</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+       *
+       *
+       * @param root TreeNode类
+       * @return bool布尔型
+       */
+      function isCompleteTree(root) {
+        // write code here
+        let queue = [];
+        if (root) {
+          queue.push(root);
+        }
+
+        let isComplete = false;
+        while (queue.length) {
+          let node = queue.shift();
+          if (!node) {
+            isComplete = true;
+            continue;
+          }
+
+          if (isComplete) {
+            return false;
+          }
+          queue.push(node.left);
+          queue.push(node.right);
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>按之字形顺序打印二叉树</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+
+      function Print(pRoot) {
+        // write code here
+
+        let res = [];
+        let queue = [];
+        if (pRoot) {
+          queue.push(pRoot);
+        }
+        let n = 0;
+        while (queue.length) {
+          let level = [];
+          let size = queue.length;
+          while (size) {
+            let node = queue.shift();
+            level.push(node.val);
+            if (node.left) {
+              queue.push(node.left);
+            }
+            if (node.right) {
+              queue.push(node.right);
+            }
+
+            size--;
+          }
+          n++;
+          if (n % 2 === 0) {
+            level.reverse();
+          }
+          res.push(level);
+        }
+        return res;
+      }
+    </script>
+  </body>
+</html>

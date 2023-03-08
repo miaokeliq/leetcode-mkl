@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>删除有序链表中重复的元素-2</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       *
+       * @param head ListNode类
+       * @return ListNode类
+       */
+      function deleteDuplicates(head) {
+        // write code here
+        if (!head) {
+          return null;
+        }
+
+        let res = new ListNode(-1);
+
+        res.next = head;
+        cur = res;
+        while (cur.next && cur.next.next) {
+          if (cur.next.val === cur.next.next.val) {
+            let temp = cur.next.val;
+            while (cur.next && cur.next.val === temp) {
+              cur.next = cur.next.next;
+            }
+          } else {
+            cur = cur.next;
+          }
+        }
+
+        return res.next;
+      }
+    </script>
+  </body>
+</html>

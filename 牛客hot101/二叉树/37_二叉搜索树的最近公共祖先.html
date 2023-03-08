@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>二叉搜索树的最近公共祖先</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /*
+       * function TreeNode(x) {
+       *   this.val = x;
+       *   this.left = null;
+       *   this.right = null;
+       * }
+       */
+      /**
+       * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+       *
+       *
+       * @param root TreeNode类
+       * @param p int整型
+       * @param q int整型
+       * @return int整型
+       */
+      function lowestCommonAncestor(root, p, q) {
+        // write code here
+        if (!root) return root;
+
+        const helperFn = (cur, p, q) => {
+          if (!cur) return null;
+          if (cur.val > q.val && cur.val > p.val) {
+            let left = helperFn(cur.left, p, q);
+            return left;
+          }
+          if (cur.val < q.val && cur.val < p.val) {
+            let right = helperFn(cur.right, p, q);
+            return right;
+          }
+          return cur;
+        };
+
+        let res = helperFn(root, p, q);
+
+        return res;
+      }
+    </script>
+  </body>
+</html>

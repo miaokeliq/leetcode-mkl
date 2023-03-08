@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>字符串的排列</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      function Permutation(str) {
+        // write code here
+        let res = [];
+        let path = [];
+
+        let strArr = str.split("");
+        let len = strArr.length;
+        let used = new Array(len).fill(0);
+        const backTracking = (str, path, len) => {
+          if (path.length === len) {
+            res.push([...path].join(""));
+            return;
+          }
+          for (let i = 0; i < len; i++) {
+            if (i > 0 && str[i] === str[i - 1] && used[i - 1] === false) {
+              continue;
+            }
+            if (used[i]) {
+              continue;
+            }
+            path.push(str[i]);
+            used[i] = 1;
+            backTracking(str, path, len);
+            used[i] = 0;
+            path.pop();
+          }
+        };
+
+        backTracking(strArr, path, len);
+
+        return [...new Set(res)];
+      }
+    </script>
+  </body>
+</html>

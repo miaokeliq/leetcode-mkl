@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>两个链表的第一个公共结点</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /*function ListNode(x){
+    this.val = x;
+    this.next = null;
+}*/
+      function FindFirstCommonNode(pHead1, pHead2) {
+        // write code here
+        let a = pHead1;
+        let b = pHead2;
+
+        while (a !== b) {
+          a = a === null ? pHead2 : a.next;
+          b = b === null ? pHead1 : b.next;
+        }
+        return a;
+      }
+    </script>
+  </body>
+</html>
