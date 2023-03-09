@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} text1
+       * @param {string} text2
+       * @return {number}
+       */
+      var longestCommonSubsequence = function (s1, s2) {
+        let len1 = s1.length;
+        let len2 = s2.length;
+        let dp = new Array(len1 + 1)
+          .fill(0)
+          .map(() => new Array(len2 + 1).fill(0));
+        for (let i = 1; i < len1 + 1; i++) {
+          for (let j = 1; j < len2 + 1; j++) {
+            if (s1[i - 1] === s2[j - 1]) {
+              dp[i][j] = dp[i - 1][j - 1] + 1;
+            } else {
+              if (dp[i][j - 1] > dp[i - 1][j]) {
+                dp[i][j] = dp[i][j - 1];
+              } else {
+                dp[i][j] = dp[i - 1][j];
+              }
+            }
+          }
+        }
+
+        return dp[len1][len2];
+      };
+    </script>
+  </body>
+</html>
