@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>全排列</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script>
+      var permute = function (num) {
+        let res = [];
+        let path = [];
+        let k = nums.length;
+        let used = new Array(k).fill(false);
+        const helperFn = function (path, res, k) {
+          if (path.length === k) {
+            res.push([...path]);
+            return;
+          }
+
+          for (let i = 0; i < k; i++) {
+            if (used[i]) continue;
+            path.push(num[i]);
+            used[i] = true;
+            helperFn(path, res, k);
+            path.pop;
+            used[i] = false;
+          }
+        };
+
+        helperFn(path, res, k);
+        return res;
+      };
+    </script>
+  </body>
+</html>

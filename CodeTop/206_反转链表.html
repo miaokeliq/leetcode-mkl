@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>反转链表</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * Definition for singly-linked list.
+       * function ListNode(val, next) {
+       *     this.val = (val===undefined ? 0 : val)
+       *     this.next = (next===undefined ? null : next)
+       * }
+       */
+      /**
+       * @param {ListNode} head
+       * @return {ListNode}
+       */
+      var reverseList = function (head) {
+        let cur = head;
+        let pre = null;
+        let next;
+        while (cur) {
+          next = cur.next;
+          cur.next = pre;
+          pre = cur;
+          cur = next;
+        }
+
+        return cur;
+      };
+    </script>
+  </body>
+</html>

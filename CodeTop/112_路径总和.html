@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>路径总和</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      var hasPathSum = function (root, targetSum) {
+        if (!root) {
+          return false;
+        }
+
+        return helperFn(root, targetSum - root.val);
+      };
+
+      const helperFn = function (root, count) {
+        if (!root.left && !root.right && count === 0) {
+          return true;
+        }
+
+        if (!root.left && !root.right) {
+          return false;
+        }
+
+        if (root.left) {
+          count -= root.left.val;
+          if (helperFn(root.left, count)) return true;
+          count += root.left.val;
+        }
+
+        if (root.right) {
+          count -= root.right.val;
+          if (helperFn(root.right, count)) return true;
+          count += root.right.val;
+        }
+        return false;
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>字符串相加</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} num1
+       * @param {string} num2
+       * @return {string}
+       */
+      var addStrings = function (num1, num2) {
+        let i = num1.length - 1;
+        let j = num2.length - 1;
+        let add = 0;
+        let answer = [];
+        while (i >= 0 || j >= 0 || add !== 0) {
+          let x = i >= 0 ? +num1[i] : 0;
+          let y = j >= 0 ? +num2[j] : 0;
+          let res = x + y + add;
+          answer.push(res % 10);
+          add = Math.floor(res / 10);
+          i--;
+          j--;
+        }
+
+        return answer.reverse().join("");
+      };
+
+      let num1 = "123";
+      let num2 = "234";
+      console.log(addStrings(num1, num2));
+    </script>
+  </body>
+</html>

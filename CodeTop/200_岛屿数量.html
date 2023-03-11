@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>岛屿数量</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {character[][]} grid
+       * @return {number}
+       */
+      var numIslands = function (grid) {
+        let count = 0;
+        let r = grid.length;
+        let c = grid[0].length;
+
+        for (let i = 0; i < r; i++) {
+          for (let j = 0; j < c; j++) {
+            if (gird[i][j] === 1) {
+              count++;
+              helperFn(grid, i, j, r, c);
+            }
+          }
+        }
+        return count;
+      };
+
+      const helperFn = function (grid, i, j, r, c) {
+        grid[i][j] = 0;
+
+        if (i + 1 < r && grid[i + 1][j] === 1) {
+          helperFn(grid, i + 1, j);
+        }
+
+        if (i - 1 >= 0 && grid[i - 1][j] === 1) {
+          helperFn(grid, i - 1, j);
+        }
+
+        if (j + 1 < c && grid[i][j + 1] === 1) {
+          helperFn(grid, i, j + 1);
+        }
+
+        if (j - 1 >= 0 && grid[i][j - 1] === 1) {
+          helperFn(grid, i, j - 1);
+        }
+      };
+    </script>
+  </body>
+</html>

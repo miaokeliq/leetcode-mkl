@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>零钱兑换</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} coins
+       * @param {number} amount
+       * @return {number}
+       */
+      var coinChange = function (coins, amount) {
+        // dp[i] == 金额为 i 时所需的硬币个数
+
+        let dp = [];
+        dp[0] = 0;
+
+        for (let i = 0; i < amount + 1; i++) {
+          dp[i] = amount + 1;
+        }
+
+        for (let i = 1; i < amount + 1; i++) {
+          for (let j = 0; j < coins.length; j++) {
+            if (coins[j] <= i) {
+              dp[i] = Math.min(dp[i], dp[i - coins[j] + 1]);
+            }
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

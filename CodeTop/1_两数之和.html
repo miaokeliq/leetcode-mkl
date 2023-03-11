@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>两数之和</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      var twoSum = function (nums, target) {
+        let map = {};
+        let res = [];
+        for (let i = 0; i < nums.length; i++) {
+          if (map.hasOwnProperty(nums[i])) {
+            res.push(map[nums[i]]);
+            res.push(i);
+          } else {
+            map[target - nums[i]] = i;
+          }
+        }
+
+        return res;
+      };
+
+      console.log(twoSum([2, 7, 11, 15], 9));
+    </script>
+  </body>
+</html>
