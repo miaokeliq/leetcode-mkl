@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>回文字串</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} s
+       * @return {number}
+       */
+      var countSubstrings = function (s) {
+        let len = s.length;
+        let dp = new Array(len).fill().map(() => new Array(len).fill(false));
+        let count = 0;
+        for (let i = len - 1; i >= 0; i--) {
+          for (let j = i; j < len; j++) {
+            if (s[i] === s[j]) {
+              if (i === j || j - i <= 1) {
+                count++;
+                dp[i][j] = true;
+              } else if (dp[i + 1][j - 1]) {
+                count++;
+                dp[i][j] = true;
+              }
+            }
+          }
+        }
+
+        return count;
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>最长回文子序列</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} s
+       * @return {number}
+          dp[i][j]: 字符串 s 在[i,j] 范围内最长的回文子序列长度为 dp[i][j]
+       */
+
+      // leetcode上能通过的算法在 牛客网上面的测试用例通过不了
+      var longestPalindromeSubseq = function (s) {
+        let len = s.length;
+        let dp = new Array(len).fill().map(() => new Array(len).fill(false));
+
+        let maxLen = 0;
+
+        for (let i = len - 1; i >= 0; i--) {
+          for (let j = i; j < len; j++) {
+            if (s[i] === s[j]) {
+              if (i === j || j - i <= 1) {
+                dp[i][j] = true;
+              } else if (dp[i + 1][j - 1]) {
+                dp[i][j] = true;
+              }
+            }
+
+            if (dp[i][j] && j - i + 1 > maxLen) {
+              maxLen = j - i + 1;
+            }
+          }
+        }
+
+        return maxLen;
+      };
+      let s = "ccbcabaabba";
+
+      console.log(longestPalindromeSubseq(s));
+    </script>
+  </body>
+</html>
